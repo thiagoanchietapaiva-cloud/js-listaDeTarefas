@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+</head>
+<body>
+    <header class="flex justify-between items-center py-4 px-6 bg-purple-600 text-white">
+        <input type="text" placeholder="Digite uma tarefa" class="flex-1 px-4 py-2 rounded bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-400"/>
+        <button class="ml-4 px-4 py-2 bg-purple-800 rounded hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400">Adicionar</button>
+    </header> 
+
+    <main class="p-15 bg-slate-200">
+        <h1 class="text-3xl text-purple-900 font-bold mb-6">Lista de Tarefas</h1>
+        <div id="tarefas" class="grid grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <h3 class="font-bold mb-4"> Titulo da Tarefa</h3>
+                <p>lorem ipsum dolor sit amet consectetur adipiscing elit.
+                    Reit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
