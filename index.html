@@ -1,41 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Tarefas</title>
+    <title>Cadastro</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="bg-slate-100">
-    <header class="flex justify-between items-center py-4 px-6 bg-purple-600 text-white sticky top-0">
-        <input id="inputTarefa" type="text" placeholder="Digite uma tarefa" class="flex-1 px-4 py-2 rounded bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-400"/>
-        <button id="botaoAdicionar" class="ml-4 px-4 py-2 bg-purple-800 rounded hover:bg-purple-700">Adicionar</button>
-    </header> 
 
-    <main class="p-6 min-h-[calc(100vh-72px)]">
-        <h1 class="text-3xl text-purple-900 font-bold mb-6">Lista de Tarefas</h1>
-        <div id="tarefas" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-    </main>
+<body class="bg-slate-200 h-screen flex justify-center items-center">
+    <div class="bg-white p-8 rounded-lg">
+        <h1 class="text-3xl text-purple-900 font-bold mb-6">Seja bem-vindo à sua Lista de Tarefas!</h1>
+        <form>
+            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Digite seu e-mail:</label>
+            <input type="email" id="email" name="email" placeholder="exemplo@email.com"
+                class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400"
+                required />
+        </form>
+        <form>
+            <label for="senha" class="block text-sm font-semibold text-gray-700 mb-2">Digite sua senha:</label>
+            <input type="password" id="senha" name="senha" placeholder="********"
+                class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400"
+                required />
+            <a href="/cadastrar.html" class="my-5 text-purple-600 hover:underline">Cadastre-se</a>
+            <button type="submit"
+                class="w-full mt-4 px-4 py-2 bg-purple-600 text-white rounded-xl hover:bg-purple-700">Entrar</button>
 
-    <!-- POPUP  -->
-    <div id="modal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4">
-        <div class="bg-white rounded-2xl w-full max-w-md p-6 shadow-2xl">
-            <h2 class="text-xl font-bold text-purple-900 mb-4">Nova Tarefa</h2>
-            
-            <label class="text-sm font-semibold text-gray-700">Título</label>
-            <input id="modalTitulo" type="text" placeholder="Ex: Estudar JavaScript" class="w-full mt-1 mb-4 px-4 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-400"/>
-            
-            <label class="text-sm font-semibold text-gray-700">Descrição</label>
-            <textarea id="modalDescricao" rows="4" placeholder="Detalhes da tarefa..." class="w-full mt-1 mb-6 px-4 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-400"></textarea>
+        </form>
 
-            <div class="flex justify-end gap-3">
-                <button id="btnCancelar" class="px-5 py-2 rounded-xl bg-gray-100 hover:bg-gray-200">Cancelar</button>
-                <button id="btnSalvar" class="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold">Salvar</button>
-            </div>
-        </div>
+
     </div>
-
-    <script src="index.js"></script>
 </body>
-</html>
 
+</body>
+
+</html>
