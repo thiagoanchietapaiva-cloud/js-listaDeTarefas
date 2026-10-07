@@ -11,13 +11,11 @@
 <body class="bg-slate-200 h-screen flex justify-center items-center">
     <div class="bg-white p-8 rounded-lg">
         <h1 class="text-3xl text-purple-900 font-bold mb-6">Seja bem-vindo à sua Lista de Tarefas!</h1>
-        <form>
+        <form onsubmit="logar(event)">
             <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Digite seu e-mail:</label>
             <input type="email" id="email" name="email" placeholder="exemplo@email.com"
                 class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400"
                 required />
-        </form>
-        <form>
             <label for="senha" class="block text-sm font-semibold text-gray-700 mb-2">Digite sua senha:</label>
             <input type="password" id="senha" name="senha" placeholder="********"
                 class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400"
@@ -30,8 +28,43 @@
 
 
     </div>
-</body>
+        <script>
+        function logar() {
+            event.preventDefault();
 
+            let email = document.querySelector("#email").value;
+            let senha = document.querySelector("#senha").value;
+
+            let dados = {
+                email,
+                senha
+            }
+
+            fetch("https://js-lista-de-tarefas-api.onrender.com/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dados)
+            })
+           .then(response => response.json())
+           .then(json => {
+                if (json.tipo == "erro") {
+                    alert(json.mensagem);
+                    return;
+                }
+
+                localStorage.setItem("token", json.token);
+                localStorage.setItem("usuario", JSON.stringify(json.usuario || json.dados));
+
+                alert(json.mensagem || "Login realizado com sucesso!");
+                window.location.href = "/tarefas.html";
+           })
+           .catch(error => {
+                alert(error.message);
+            })
+        }
+    </script>
 </body>
 
 </html>
