@@ -34,7 +34,7 @@ buscarTarefas();
 function carregarTarefas(lista) {
     const grid = document.getElementById("tarefas");
     if (!lista || lista.length == 0) {
-        grid.innerHTML = "<p class='text-gray-400'>Nenhuma tarefa ainda</p>";
+        grid.innerHTML = "<p class='text-gray-400'>Nenhuma tarefa encontrada</p>";
         return;
     }
     grid.innerHTML = '';
@@ -45,17 +45,17 @@ function carregarTarefas(lista) {
             <h3 class="font-bold text-purple-900">${t.titulo}</h3>
             <p class="text-sm text-gray-600 mt-1">${t.descricao || 'Sem descrição'}</p>
             <div class="flex gap-2 mt-3">
-                <button onclick="abrirFormEditar('${idReal}')" class="flex items-center gap-1 text-xs font-bold px-3 py-1 rounded hover:bg-purple-200"><box-icon name='edit-alt'></box-icon></button>
-                <button onclick="excluirTarefa('${idReal}')" class="flex items-center gap-1 text-xs font-bold px-3 py-1 rounded hover:bg-red-100"><box-icon name='trash'></box-icon></button>
+                <button onclick="abrirFormEditar('${idReal}')" class="flex items-center gap-1 text-xs font-bold px-3 py-1 hover:bg-purple-200"><box-icon name='edit-alt'></box-icon></button>
+                <button onclick="excluirTarefa('${idReal}')" class="flex items-center gap-1 text-xs font-bold px-3 py-1 hover:bg-red-100"><box-icon name='trash'></box-icon></button>
             </div>
         </div>`;
     });
 }
 
+
 function abrirFormCriar() {
     containerForm.classList.remove('hidden');
     containerForm.classList.add('flex');
-    inputTitulo.value = inputTarefa.value;
     inputTitulo.focus();
 }
 function fecharFormCriar() {
@@ -63,7 +63,7 @@ function fecharFormCriar() {
     containerForm.classList.remove('flex');
     inputTitulo.value = '';
     inputDescricao.value = '';
-    inputTarefa.value = '';
+
 }
 
 function abrirFormEditar(id) {
@@ -80,6 +80,20 @@ function fecharFormEditar() {
     containerFormEditar.classList.remove('flex');
     idParaEditar = null;
 }
+
+function pesquisarTarefa(palavra){
+    if(palavra.length >= 3){
+        let filtradas = tarefas.filter(tarefa => 
+            tarefa.titulo.toLowerCase().includes(palavra.toLowerCase())
+        );
+        carregarTarefas(filtradas);
+    } else {
+        carregarTarefas(tarefas);
+    }
+}
+inputTarefa.addEventListener('input', () => {
+    pesquisarTarefa(inputTarefa.value);
+});
 
 formTarefa.addEventListener('submit', (e) => {
     e.preventDefault();
